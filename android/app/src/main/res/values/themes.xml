@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.KidsGakushu" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:statusBarColor">#FDE68A</item>
+        <item name="android:navigationBarColor">#FDE68A</item>
+        <item name="android:windowBackground">#FDE68A</item>
+        <item name="android:colorPrimary">#F59E0B</item>
+    </style>
+</resources>

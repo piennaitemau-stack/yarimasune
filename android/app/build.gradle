@@ -1,0 +1,47 @@
+plugins {
+    id "com.android.application"
+}
+
+android {
+    namespace "jp.kidsgakushu.app"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "jp.kidsgakushu.app"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("keystore/kids-gakushu.jks")
+            storePassword "kidsgakushu"
+            keyAlias "kidsgakushu"
+            keyPassword "kidsgakushu"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.register("syncHtml", Copy) {
+    from rootProject.file("../kids-gakushu.html")
+    into "src/main/assets/www"
+    rename { "index.html" }
+}
+tasks.named("preBuild").configure { dependsOn("syncHtml") }
